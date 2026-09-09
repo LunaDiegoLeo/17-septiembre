@@ -276,7 +276,7 @@ body::after {
 <body>
 
 
-<audio autoplay loop>
+<audio id="bg-music"loop>
     <source src="musica.mp3" type="audio/mpeg">
 </audio>
 
@@ -346,6 +346,17 @@ body::after {
 </div>
 
 <script>
+const musica = document.getElementById("musica");
+
+    window.addEventListener("load", () => {
+        musica.play()
+            .then(() => {
+                console.log("Música iniciada automáticamente");
+            })
+            .catch(error => {
+                console.log("Chrome bloqueó el autoplay:", error);
+            });
+    });
 function actualizarCuentaRegresiva() {
     const objetivo = new Date("2026-09-17T03:33:00-06:00");
     const ahora = new Date();
